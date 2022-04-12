@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Add custom markers in Mapbox GL JS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .marker {
+            background-image: url("mapbox-icon.png");
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .mapboxgl-popup {
+            max-width: 200px;
+        }
+        
+        .mapboxgl-popup-content {
+            text-align: center;
+            font-family: "Open Sans", sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <script>
+        mapboxgl.accessToken =
+            "pk.eyJ1IjoibXJ0b3BmIiwiYSI6IkZrS25UV0UifQ.kColsXmD6gltDh8UpgQaxg";
+
+        const map = new mapboxgl.Map({
+            container: "map",
+            style: "mapbox://styles/mapbox/light-v10",
+            center: [6.1, 50.78],
+            zoom: 12,
+        });
+
+        const geojson = {
+            type: "FeatureCollection",
+            features: [{
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [6.1086993, 50.7654489]
+                },
+                properties: {
+                    title: "Tat!",
+                    description: "B\u00f6se Dinge geschahen hier!",
+                },
+            }, {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [6.0806419, 50.7756402]
+                },
+                properties: {
+                    title: "Tat!",
+                    description: "B\u00f6se Dinge geschahen hier!",
+                },
+            }, {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [6.0898579, 50.7829834]
+                },
+                properties: {
+                    title: "Tat!",
+                    description: "B\u00f6se Dinge geschahen hier!",
+                },
+            }, {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [6.1086993, 50.7654489]
+                },
+                properties: {
+                    title: "Tat!",
+                    description: "B\u00f6se Dinge geschahen hier!",
+                },
+            }, {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [6.087281, 50.7728269]
+                },
+                properties: {
+                    title: "Tat!",
+                    description: "B\u00f6se Dinge geschahen hier!",
+                },
+            }, {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [6.1131538, 50.7698367]
+                },
+                properties: {
+                    title: "Tat!",
+                    description: "B\u00f6se Dinge geschahen hier!",
+                },
+            }, {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [6.1125138, 50.7694785]
+                },
+                properties: {
+                    title: "Tat!",
+                    description: "B\u00f6se Dinge geschahen hier!",
+                },
+            }, {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [6.0436864, 50.7689847]
+                },
+                properties: {
+                    title: "Tat!",
+                    description: "B\u00f6se Dinge geschahen hier!",
+                },
+            }, {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [6.1223522, 50.788808]
+                },
+                properties: {
+                    title: "Tat!",
+                    description: "B\u00f6se Dinge geschahen hier!",
+                },
+            }, {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [6.1041105, 50.7946436]
+                },
+                properties: {
+                    title: "Tat!",
+                    description: "B\u00f6se Dinge geschahen hier!",
+                },
+            }, {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [6.0901242, 50.7831857]
+                },
+                properties: {
+                    title: "Tat!",
+                    description: "B\u00f6se Dinge geschahen hier!",
+                },
+            }, {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [6.0888956, 50.7703856]
+                },
+                properties: {
+                    title: "Tat!",
+                    description: "B\u00f6se Dinge geschahen hier!",
+                },
+            }, {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [6.0918714, 50.7719392]
+                },
+                properties: {
+                    title: "Tat!",
+                    description: "B\u00f6se Dinge geschahen hier!",
+                },
+            }, {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [0.0, 0.0]
+                },
+                properties: {
+                    title: "Tat!",
+                    description: "B\u00f6se Dinge geschahen hier!",
+                },
+            }, {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [0.0, 0.0]
+                },
+                properties: {
+                    title: "Tat!",
+                    description: "B\u00f6se Dinge geschahen hier!",
+                },
+            }, {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [6.0829444, 50.7796767]
+                },
+                properties: {
+                    title: "Tat!",
+                    description: "B\u00f6se Dinge geschahen hier!",
+                },
+            }, {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [0.0, 0.0]
+                },
+                properties: {
+                    title: "Tat!",
+                    description: "B\u00f6se Dinge geschahen hier!",
+                },
+            }, {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [6.0902591, 50.7832882]
+                },
+                properties: {
+                    title: "Tat!",
+                    description: "B\u00f6se Dinge geschahen hier!",
+                },
+            }, {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [0.0, 0.0]
+                },
+                properties: {
+                    title: "Tat!",
+                    description: "B\u00f6se Dinge geschahen hier!",
+                },
+            }, ],
+        };
+
+        // code from the next step will go here!
+        // add markers to map
+        for (const feature of geojson.features) {
+            // create a HTML element for each feature
+            const el = document.createElement("div");
+            el.className = "marker";
+
+            // make a marker for each feature and add to the map
+            new mapboxgl.Marker(el)
+                .setLngLat(feature.geometry.coordinates)
+                .setPopup(
+                    new mapboxgl.Popup({
+                        offset: 25
+                    }) // add popups
+                    .setHTML(
+                        `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+                    )
+                )
+                .addTo(map);
+        }
+    </script>
+</body>
+
+</html>
